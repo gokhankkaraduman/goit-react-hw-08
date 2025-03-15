@@ -6,9 +6,12 @@ function Home () {
         <section className={css.section}>
             <div className={css.container}>
                 <div className={css.titleContent}>
-                    <h1 className={css.title}>Where Connections Thrive.</h1>
+                    <div>
+                        <h1 className={css.title}>Connecting the</h1>
+                        <h1 className={css.title}>world</h1>
+                    </div>
                     <p className={css.subtitle}>
-                        Stay connected, never miss a call. With Nexora, managing your contacts is easier than ever. Organize your phonebook, streamline communication, and keep relationships thriving.
+                        Keep your contacts organized and accessible with Nexora. No more lost numbers or scattered lists—just a seamless way to store, manage, and connect with the people who matter most. Stay in control of your phonebook and simplify your communication like never before.
                     </p>
                 </div>
                 <div className={css.td}>
