@@ -7,8 +7,10 @@ function Header () {
     const isLogin = false;
     return (
         <header className={css.header}> 
-            <Logo />
-            {isLogin ? <UserNav /> : <AuthNav />}
+            <div className={css.container}>
+                <Logo />
+                {isLogin ? <UserNav /> : <AuthNav />}
+            </div>
         </header>
     );
 }

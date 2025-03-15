@@ -1,14 +1,19 @@
 .header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
     background-color: var(--accent-color);
     color: var(--text-color);
     border-bottom: 1px solid var(--border-color);
-    width: 1280px;
     margin: 0 auto;
+    width: 95%;
+    max-width: 1200px;
+
     margin-top: 20px;
     border-radius: 10px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1rem;
 }
