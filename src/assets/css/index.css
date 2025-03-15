@@ -1,0 +1,37 @@
+@font-face {
+    font-family: "Ailerons";
+    src: url('../Fonts/Ailerons-TrialVersion.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Dystopian";
+    src: url('../Fonts/Sddystopiandemo-GO7xa.otf');
+}
+@font-face {
+    font-family: "Bulzing";
+    src: url('../Fonts/Bulzingitalic-qZOrV.otf');
+}
+:root {
+    --background-color: #0B0C10;
+    --primary-color: #1F2833;
+    --text-color: #C5C6C7;
+    --accent-color: #66FCF1;
+    --secondary-accent: #45A29E;
+    --border-color: rgba(197, 198, 199, 0.3);
+    --shadow-color: rgba(0, 0, 0, 0.4);
+
+    /* 🎨 Button Colors */
+    --btn-bg: var(--accent-color);
+    --btn-text: #0B0C10;
+    --btn-hover: var(--secondary-accent);
+
+    /* 🖋 Font Settings */
+    --font-primary: "Poppins", sans-serif;
+    --font-text: "Bulzing", sans-serif;
+    --font-logo: "Ailerons", sans-serif;
+    --font-body: 'Dystopian', sans-serif;
+
+    /* ✨ Transition */
+    --transition-speed: 0.3s ease-in-out;
+}
