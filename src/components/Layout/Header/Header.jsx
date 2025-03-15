@@ -4,12 +4,11 @@ import UserNav from '../../UserNav/UserNav';
 import Logo from '../../Logo/Logo';
 
 function Header () {
-
+    const isLogin = false;
     return (
-        <header> 
+        <header className={css.header}> 
             <Logo />
-            <AuthNav />
-            <UserNav />
+            {isLogin ? <UserNav /> : <AuthNav />}
         </header>
     );
 }

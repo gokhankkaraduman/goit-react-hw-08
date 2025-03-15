@@ -1,0 +1,34 @@
+.userNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.userNavContent {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.userNavButton {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    width: 130px;
+    height: 30px;
+    margin-left: auto;
+    font-family: var(--font-text);
+    font-size: 1.4rem;
+    border:none;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--secondary-accent);
+    color: var(--text-color);
+}
+.text{
+    font-family: var(--font-text);
+    font-size: 2rem;
+    color: var(--text-color);
+}

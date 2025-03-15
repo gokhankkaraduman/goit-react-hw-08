@@ -16,13 +16,12 @@
     --background-color: #0B0C10;
     --primary-color: #1F2833;
     --text-color: #C5C6C7;
-    --accent-color: #66FCF1;
-    --secondary-accent: #45A29E;
+    --accent-color: #180825;
+    --secondary-accent: #3d08b8;
     --border-color: rgba(197, 198, 199, 0.3);
     --shadow-color: rgba(0, 0, 0, 0.4);
 
     /* 🎨 Button Colors */
-    --btn-bg: var(--accent-color);
     --btn-text: #0B0C10;
     --btn-hover: var(--secondary-accent);
 
@@ -34,4 +33,12 @@
 
     /* ✨ Transition */
     --transition-speed: 0.3s ease-in-out;
+}
+body{
+    font-family: var(--font-body);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }

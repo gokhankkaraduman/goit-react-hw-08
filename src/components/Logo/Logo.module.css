@@ -1,3 +1,18 @@
 .logotext{
     font-family: var(--font-logo);
 }
+
+.logo{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logotext{
+    font-size: 2rem;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    font-weight: 700;
+    margin: 0;
+}

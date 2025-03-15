@@ -4,7 +4,7 @@ import css from './Logo.module.css';
 
 function Logo () {
     return ( 
-    <NavLink to="/"> 
+    <NavLink to="/" className={css.logo}> 
         <span className={css.logoimg}>
             <img src={logo} alt="logo"  width={80} />
         </span>

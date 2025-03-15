@@ -1,0 +1,15 @@
+.authNavList{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:35px;
+}
+.authNavItem{
+    font-family: var(--font-text);
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color var(--transition-speed);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+}
