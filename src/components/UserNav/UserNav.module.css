@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    gap:20px;
 }
 
 .userNavContent {
@@ -17,7 +18,7 @@
     align-items: center;
     gap:10px;
     width: 130px;
-    height: 30px;
+    height: 45px;
     margin-left: auto;
     font-family: var(--font-text);
     font-size: 1.4rem;
@@ -31,4 +32,19 @@
     font-family: var(--font-text);
     font-size: 2rem;
     color: var(--text-color);
+}
+.userNavLinks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-text);
+    font-size: 1.7rem;
+    color: var(--text-color);
+
+}
+.home,.contact{
+    border: 1px solid var(--border-color);    
+    border-radius: 10px;
+    padding: 10px 20px;
 }

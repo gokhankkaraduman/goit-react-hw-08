@@ -2,12 +2,25 @@ import { Formik, Form, Field } from 'formik';
 import { BiLogIn } from "react-icons/bi";
 import css from './LoginForm.module.css';
 import validationSchema from '../../validationSchema/loginValidation';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { loginUser } from '../../redux/Auth/operation';
 
 const LoginForm = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleSubmit = (values) => {
+        dispatch(loginUser(values)).unwrap().then(() => {
+            navigate('/');
+            console.log('User logged in successfully');
+        });
+    }
     return (
         <Formik 
             initialValues={{ email: '', password: '' }}
             validationSchema={validationSchema}
+            onSubmit={handleSubmit}
         >
             {({ values, errors, touched, handleChange, handleBlur, isSubmitting }) => (
                 <div className={css.container}>

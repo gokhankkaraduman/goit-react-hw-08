@@ -2,8 +2,13 @@ import { Formik, Form, Field } from 'formik';
 import { BiLogIn } from "react-icons/bi";
 import css from './RegisterForm.module.css';
 import validationSchema from '../../validationSchema/registerValidation';
+import { registerUser } from '../../redux/Auth/operation';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 const RegisterForm = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const handleValidation = (values) => {
         const errors = {};
         try {
@@ -16,10 +21,18 @@ const RegisterForm = () => {
         return errors;
     };
 
+    const handleSubmit = (values ) =>{
+        dispatch(registerUser(values)).unwrap().then(() => {
+            navigate('/login');
+            console.log('User registered successfully');
+        });
+    };
+
     return (
         <Formik
             initialValues={{ name: '', email: '', password: '' }}
             validate={handleValidation}
+            onSubmit={handleSubmit}
         >
             {({
                 values,

@@ -6,10 +6,10 @@ function AuthNav () {
         <nav className={css.authNav}>
             <ul className={css.authNavList}>
                 <li className={css.authNavItem}>
-                    <NavLink to="/register" exact>Register</NavLink>
+                    <NavLink to="/register" >Register</NavLink>
                 </li>
                 <li className={css.authNavItem}>
-                    <NavLink to="/login" exact>Login</NavLink>
+                    <NavLink to="/login" >Login</NavLink>
                 </li>
             </ul>
         </nav>

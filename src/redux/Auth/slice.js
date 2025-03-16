@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { registerUser, loginUser, logoutUser, currentUser } from "./operation";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 
 const toastSettings = {
