@@ -26,14 +26,32 @@ const loginUser = createAsyncThunk('auth/loginUser', async (loginInfo, thunkAPI)
     }
 });
 
-const logoutUser = createAsyncThunk('auth/logoutUser', async (logoutInfo, thunkAPI) => {
+const logoutUser = createAsyncThunk("auth/logoutUser", async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token; // Token'ı store'dan al
+
+    if (!token) {
+        return thunkAPI.rejectWithValue("No token available"); // Eğer token yoksa, hata dön
+    }
+
     try {
-        const response = await axios.post(USERS_LOGOUT_URL, logoutInfo);
+        const response = await axios.post(
+        USERS_LOGOUT_URL,
+        {},
+        {
+            headers: {
+            Authorization: `Bearer ${token}`, // Header'a token'ı ekleyin
+            },
+        }
+        );
         return response.data;
-    }catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
+    } catch (error) {
+        return thunkAPI.rejectWithValue(
+        error.response ? error.response.data : error.message
+        );
     }
 });
+
 const currentUser = createAsyncThunk(
     "auth/current",
     async (currentInfo, thunkAPI) => {
