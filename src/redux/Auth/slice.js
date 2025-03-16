@@ -1,22 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { registerUser, loginUser, logoutUser, currentUser } from "./operation";
-import { toast } from "react-toastify";
+import { toast, Bounce } from "react-toastify";
 import axios from "axios";
 
 
 const toastSettings = {
-    duration: 5000,
-    position: "top-center",
-    style: {
-        borderRadius: "10px",
-        background: "#333",
-        color: "#fff",
-    },
     success: {
         icon: "✅",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark", // "dark" teması için doğru şekilde ayarlandı
+        transition: Bounce, // Geçiş efekti doğru şekilde belirtildi
+        position: "top-right", // "top-center" yerine "top-right"
     },
     error: {
         icon: "❌",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark", // "dark" teması için doğru şekilde ayarlandı
+        transition: Bounce, // Geçiş efekti doğru şekilde belirtildi
+        position: "top-right", // "top-center" yerine "top-right"
     },
 };
 
