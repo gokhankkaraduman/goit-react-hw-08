@@ -5,7 +5,7 @@ import Background from '../Background/Background.jsx';
 import { ToastContainer } from 'react-toastify';
 
 import HomePageLoading from '../HomePageLoading/HomePageLoading.jsx';
-
+import Footer from "../Footer/Footer.jsx"
 import Home from '../../pages/HomePage/Home.jsx';
 import LoginPage from '../../pages/LoginPage/LoginPage.jsx';
 import RegisterPage from '../../pages/RegisterPage/RegisterPage.jsx';
@@ -26,6 +26,7 @@ function App() {
               {/* Giriş yapmış kullanıcılar için Contacts */}
             </Routes>
           </div>
+          <Footer />
           <ToastContainer />
         </Background>
 

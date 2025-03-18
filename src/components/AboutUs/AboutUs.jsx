@@ -1,12 +1,16 @@
 import React from "react";
 import { FaUsers, FaBrain, FaCode } from "react-icons/fa";
 import css from './AboutUs.module.css';
-import team from '../../assets/img/team.png';
-import innovation from '../../assets/img/innovation.jpeg';
+import { motion } from "framer-motion";
 
 function AboutUs() {
   return (
-    <section className={css.aboutSection}>
+    <motion.section
+        initial={{ opacity: 0, y: 100 }} 
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }} 
+        viewport={{ once: true }}
+        className={css.aboutSection}>
       <div className={css.container}>
         <div className={css.textContent}>
           <h2>About Us</h2>
@@ -35,7 +39,7 @@ function AboutUs() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
