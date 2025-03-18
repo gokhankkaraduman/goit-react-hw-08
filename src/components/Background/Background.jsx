@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 function Background({ children }) {
     const COLORS = ["#13FFA", "#1E67C6", "#CE84CF", "#DD335C"];
     const color = useMotionValue(COLORS[0]);
-    const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #020617 50%, ${color})`;
+    const backgroundImage = useMotionTemplate`radial-gradient(155% 125% at 20% 0%, #020617 30%, ${color})`;
 
     useEffect(() => {
         animate(color, COLORS, {

@@ -1,0 +1,30 @@
+.section {
+    margin: 0 auto;
+    width: 95%;
+    max-width: 1200px;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    gap:20px;
+    padding: 1rem;
+}
+.content{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:20px;
+}
+.text{
+    width: 550px;
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+}
+.title{
+    font-size:3rem;
+}

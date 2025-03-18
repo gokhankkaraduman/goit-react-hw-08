@@ -1,0 +1,77 @@
+.section {
+    margin: 0 auto;
+    width: 95%;
+    max-width: 1200px;
+
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    gap: 20px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.titleContent {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    gap: 40px;
+}
+
+.title {
+    font-size: 3rem;
+    font-family: var(--font-body);
+    color: var(--text-color);
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 1.7rem;
+    letter-spacing: 1px;
+    font-family: var(--font-body);
+    color: var(--text-color);
+}
+
+.td {
+    height: 700px;
+}
+
+.subtitle span {
+    font-weight: 600;
+    color: rgba(75, 45, 141, 1);
+    /* Koyu mor tonları */
+    position: relative;
+    display: inline-block;
+    font-size: 1.3em;
+    letter-spacing: 1px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.subtitle span::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(122, 77, 202, 1);
+    /* Daha açık mor tonları */
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.subtitle span:hover {
+    color: rgba(122, 77, 202, 1);
+    /* Hoverda mor tonları */
+    transform: scale(1.05);
+}
+
+.subtitle span:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}

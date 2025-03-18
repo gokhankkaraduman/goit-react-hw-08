@@ -2,19 +2,19 @@ import css from './UserNav.module.css';
 import { HiOutlineLogout } from "react-icons/hi";
 import { selectAuth } from '../../redux/Auth/selectors';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { logoutUser } from '../../redux/Auth/operation';
 import { useDispatch } from 'react-redux';
 
 
 function UserNav () {
+    const navigate = useNavigate();
     const auth = useSelector(selectAuth);
-    
     const dispatch = useDispatch();
 
     const handleLogout = () => {
         dispatch(logoutUser()).unwrap().then(() => {
-            
+            navigate('/');
         });
     };
     return (
