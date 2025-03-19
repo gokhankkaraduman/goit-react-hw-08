@@ -1,6 +1,6 @@
 import Spline from '@splinetool/react-spline';
-import css from './HomePageLoading.module.css';
-function HomePageLoading () {
+import css from './MainLoading.module.css';
+function MainLoading () {
     return (
         
         <div>
@@ -10,4 +10,4 @@ function HomePageLoading () {
         </div>
     )
 };
-export default HomePageLoading;
+export default MainLoading;
