@@ -1,0 +1,144 @@
+.section {
+
+    transition: transform 0.3s ease;
+    color:var(--text-color)
+}
+
+
+.addContactBox {
+    width: 400px;
+    min-height: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.addContactBox:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+    /* Hafif bir büyüme efekti */
+}
+
+.addContactBox h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #4112a5;
+    transition: color 0.3s ease;
+    /* Yeni hover için */
+}
+
+.addContactBox h2:hover {
+    color: #5a2cd1;
+    /* Renk değişimi */
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    /* Yeni hover için */
+}
+
+.inputContainer:hover {
+    transform: translateX(2px);
+    /* Hafif bir kayma efekti */
+}
+
+.label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #4112a5;
+    transition: color 0.3s ease, transform 0.3s ease;
+    /* Transform eklendi */
+}
+
+.label:hover {
+    color: #5a2cd1;
+    transform: scale(1.05);
+    /* Hafif bir büyüme efekti */
+}
+
+.input {
+    color: var(--text-color);
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background: transparent;
+    transition: all 0.3s ease, transform 0.3s ease;
+    /* Transform eklendi */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.input:hover {
+    border-color: #4112a5;
+    box-shadow: 0 4px 8px rgba(65, 18, 165, 0.2);
+    transform: translateY(-2px);
+    /* Hafif bir yükselme */
+}
+
+.input:focus {
+    border-color: #4112a5;
+    box-shadow: 0 0 8px rgba(65, 18, 165, 0.3);
+    outline: none;
+}
+
+.submitButton {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text-color);    
+    background-color: #4112a5;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    /* Yeni efektler */
+}
+
+.submitButton:hover {
+    background-color: #5a2cd1;
+    transform: scale(1.05);
+    /* Hafif bir büyüme */
+    box-shadow: 0 4px 12px rgba(90, 44, 209, 0.4);
+    /* Hafif bir gölge */
+}
+
+.submitButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    /* Disabled durumda hover efekti yok */
+    box-shadow: none;
+}
+
+.errorMessage {
+    color: #d32f2f;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    /* Yeni hover için */
+}
+
+.errorMessage:hover {
+    transform: translateY(-1px);
+    /* Hafif bir yükselme */
+    opacity: 0.8;
+    /* Hafif bir solma efekti */
+}

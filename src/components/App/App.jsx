@@ -12,6 +12,7 @@ import RegisterPage from '../../pages/RegisterPage/RegisterPage.jsx';
 import PrivateRoute from '../../router/Private/PrivateRoute.jsx';
 import RestrictedRoute from '../../router/Restricted/RestrictedRoute.jsx';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage.jsx';
+import ContactsPage from '../../pages/ContactsPage/ContactsPage.jsx'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
               <Route path="/register" element={<RestrictedRoute Component={<RegisterPage />} to="/" />} />
               <Route path="/" element={<Home />} /> 
               {/* Giriş yapmış kullanıcılar için Contacts */}
+              <Route path="/contacts" element={<PrivateRoute Component={<ContactsPage />} to="/" />}/>
               <Route path="*" element={<NotFoundPage  className="not-found"/>} />
             </Routes>
           </div>
