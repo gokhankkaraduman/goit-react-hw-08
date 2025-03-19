@@ -1,36 +1,46 @@
+/* Contact.module.css */
+
 .contactCard {
+    height: 150px;
+    width: 300px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    padding: 10px;
-    background: linear-gradient(135deg, #f9f9f9, #ececec);
+    padding: 15px 20px;
     border-radius: 8px;
-    transition: all 0.3s ease;
+    background-color: transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    transition: box-shadow 0.3s ease;
 }
 
 .contactCard:hover {
-    background: linear-gradient(135deg, #ffffff, #f5f5f5);
-    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 1);
+    /* Hover efektiyle gölgeyi artır */
 }
-
+.wrapper{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+}
 .contactInfo {
     flex-grow: 1;
-    font-size: 16px;
-    color: #2c2c2c;
-    font-family: "Arial", sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 .contactName,
 .contactNumber {
-    margin: 5px 0;
     display: flex;
     align-items: center;
+    margin: 5px 0;
+    font-size: 1rem;
+    color: var(--text-color);
 }
 
 .icon {
-    margin-right: 8px;
-    color: #4112a5;
+    margin-right: 10px;
+    color: #4b2d8d;
+    /* Mor ikon rengi */
 }
 
 .buttonContainer {
@@ -38,40 +48,26 @@
     gap: 10px;
 }
 
-.editButton {
-    padding: 6px 12px;
-    font-size: 14px;
-    font-weight: bold;
+.editButton,
+.deleteButton,
+.saveButton {
+    background-color: #4b2d8d;
     color: white;
-    background-color: #1976d2;
-    /* Mavi ton */
     border: none;
-    border-radius: 4px;
+    padding: 8px 12px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.editButton:hover {
-    background-color: #115293;
-    /* Daha koyu mavi */
-    transform: scale(1.05);
-}
-
-.deleteButton {
-    padding: 6px 12px;
-    font-size: 14px;
-    font-weight: bold;
-    color: white;
-    background-color: #e53935;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.deleteButton:hover {
-    background-color: #c62828;
-    transform: scale(1.05);
+.editButton:hover,
+.deleteButton:hover,
+.saveButton:hover {
+    background-color: #3a226b;
+    /* Daha koyu mor renk */
 }
 
 .editContainer {
@@ -83,39 +79,13 @@
 
 .editInput {
     padding: 8px;
-    font-size: 14px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    background: transparent;
-    transition: all 0.3s ease;
-}
-
-.editInput:hover {
-    border-color: #4112a5;
-    box-shadow: 0 2px 4px rgba(65, 18, 165, 0.2);
-}
-
-.editInput:focus {
-    border-color: #4112a5;
-    box-shadow: 0 0 6px rgba(65, 18, 165, 0.3);
-    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    /* Açık gri arka plan */
 }
 
 .saveButton {
-    padding: 6px 12px;
-    font-size: 14px;
-    font-weight: bold;
-    color: white;
-    background-color: #388e3c;
-    /* Yeşil ton */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.saveButton:hover {
-    background-color: #2e7d32;
-    /* Daha koyu yeşil */
-    transform: scale(1.05);
+    align-self: flex-start;
+    /* Save butonunu sola hizala */
 }

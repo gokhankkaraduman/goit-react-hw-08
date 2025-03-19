@@ -1,15 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast, Bounce } from "react-toastify";
 import {
   getContacts,
   addContact,
   updateContact,
   removeContact,
 } from "./operation";
-import { toast, Bounce } from "react-toastify";
 
 const initialState = {
-  items: [
-  ],
+  items: [],
   loadingStates: {
     fetch: false,
     add: false,
@@ -51,20 +50,24 @@ const contactsSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
+      .addCase(getContacts.pending, (state) => {
+        state.loadingStates.fetch = true;
+        state.error = null;
+      })
       .addCase(getContacts.fulfilled, (state, action) => {
         state.items = action.payload;
         state.loadingStates.fetch = false;
         state.error = null;
         toast.success("Your contacts are ready!", toastSettings.success);
       })
-      .addCase(getContacts.pending, (state) => {
-        state.loadingStates.fetch = true;
-        state.error = null;
-      })
       .addCase(getContacts.rejected, (state, action) => {
         state.error = action.error.message;
         state.loadingStates.fetch = false;
-        toast.error("Failed to your contacts!", toastSettings.error);
+        toast.error("Failed to download your contacts!", toastSettings.error);
+      })
+      .addCase(addContact.pending, (state) => {
+        state.loadingStates.add = true;
+        state.error = null;
       })
       .addCase(addContact.fulfilled, (state, action) => {
         state.items.push(action.payload);
@@ -72,14 +75,14 @@ const contactsSlice = createSlice({
         state.error = null;
         toast.success("Contact added successfully!", toastSettings.success);
       })
-      .addCase(addContact.pending, (state) => {
-        state.loadingStates.add = true;
-        state.error = null;
-      })
       .addCase(addContact.rejected, (state, action) => {
         state.error = action.error.message;
         state.loadingStates.add = false;
         toast.error("Failed to add contact!", toastSettings.error);
+      })
+      .addCase(updateContact.pending, (state) => {
+        state.loadingStates.update = true;
+        state.error = null;
       })
       .addCase(updateContact.fulfilled, (state, action) => {
         state.items = state.items.map((contact) =>
@@ -88,26 +91,22 @@ const contactsSlice = createSlice({
         state.loadingStates.update = false;
         toast.success("Contact updated successfully!", toastSettings.success);
       })
-      .addCase(updateContact.pending, (state) => {
-        state.loadingStates.update = true;
-        state.error = null;
-      })
       .addCase(updateContact.rejected, (state, action) => {
-        state.error = action.error.message;
+        state.error = action.payload || "Failed to update contact"; // Use payload for specific error
         state.loadingStates.update = false;
-        toast.error("Failed to update contact!", toastSettings.error);
-      })
-      .addCase(removeContact.fulfilled, (state, action) => {
-        state.items = state.items.filter(
-          (contact) => contact.id !== action.payload
-        );
-        state.loadingStates.delete = false;
-        state.error = null;
-        toast.success("Contact deleted successfully!", toastSettings.success);
+        toast.error(state.error, toastSettings.error); // Show specific error
       })
       .addCase(removeContact.pending, (state) => {
         state.loadingStates.delete = true;
         state.error = null;
+      })
+      .addCase(removeContact.fulfilled, (state, action) => {
+        state.items = state.items.filter(
+          (contact) => contact.id !== action.payload.id
+        );
+        state.loadingStates.delete = false;
+        state.error = null;
+        toast.success("Contact deleted successfully!", toastSettings.success);
       })
       .addCase(removeContact.rejected, (state, action) => {
         state.error = action.error.message;

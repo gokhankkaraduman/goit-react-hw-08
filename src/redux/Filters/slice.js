@@ -5,7 +5,6 @@ import {
   updateContact,
   removeContact,
 } from "../Contacts/operation";
-import { toast, Bounce } from "react-toastify";
 
 const initialState = {
   name: "",
@@ -15,8 +14,8 @@ const initialState = {
   sortType: "creationDate",
 };
 
-const filterProccess = (filter, contacts, searchType) => {
-  if (!filter || !contacts) {
+const filterProcess = (filter, contacts, searchType) => {
+  if (!filter || !contacts || !contacts.length) {
     return contacts || [];
   }
   return contacts.filter((contact) => {
@@ -30,11 +29,9 @@ const filterProccess = (filter, contacts, searchType) => {
 };
 
 const sortContacts = (contacts, sortType) => {
-  if (!contacts) {
-    toast.error("No contacts to be sorted");
+  if (!contacts || !contacts.length) {
     return [];
   }
-
   return [...contacts].sort((a, b) => {
     switch (sortType) {
       case "name":
@@ -42,8 +39,7 @@ const sortContacts = (contacts, sortType) => {
       case "number":
         return a.number.localeCompare(b.number);
       case "creationDate":
-        // Return as original
-        return a.id.localeCompare(b.id);
+        return new Date(a.createdAt) - new Date(b.createdAt);
       default:
         return 0;
     }
@@ -54,12 +50,10 @@ const filtersSlice = createSlice({
   name: "filters",
   initialState,
   reducers: {
-    initFilteredContacts: (state, action) => {
-      state.filteredContacts = sortContacts(action.payload, state.sortType);
-    },
     changeNameFilter: (state, action) => {
       state.name = action.payload.filter;
-      const filtered = filterProccess(
+      state.number = "";
+      const filtered = filterProcess(
         action.payload.filter,
         action.payload.contacts,
         "name"
@@ -68,7 +62,8 @@ const filtersSlice = createSlice({
     },
     changeNumberFilter: (state, action) => {
       state.number = action.payload.filter;
-      const filtered = filterProccess(
+      state.name = "";
+      const filtered = filterProcess(
         action.payload.filter,
         action.payload.contacts,
         "number"
@@ -77,33 +72,49 @@ const filtersSlice = createSlice({
     },
     changeSearchType: (state, action) => {
       state.searchType = action.payload;
+      if (state.searchType === "name") {
+        state.number = "";
+      } else {
+        state.name = "";
+      }
+      state.filteredContacts = sortContacts(
+        action.payload.contacts,
+        state.sortType
+      );
     },
     changeSortType: (state, action) => {
-      state.sortType = action.payload;
+      state.sortType = action.payload.sortType;
       state.filteredContacts = sortContacts(
-        state.filteredContacts,
-        action.payload
+        action.payload.contacts || state.filteredContacts,
+        state.sortType
       );
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(getContacts.fulfilled, (state, action) => {
-        state.filteredContacts = action.payload;
-        state.name = "";
-        state.number = "";
+        state.filteredContacts = sortContacts(action.payload, state.sortType);
       })
       .addCase(addContact.fulfilled, (state, action) => {
-        state.filteredContacts.push(action.payload);
+        const updatedContacts = [...state.filteredContacts, action.payload];
+        state.filteredContacts = sortContacts(updatedContacts, state.sortType);
       })
       .addCase(updateContact.fulfilled, (state, action) => {
         state.filteredContacts = state.filteredContacts.map((contact) =>
           contact.id === action.payload.id ? action.payload : contact
         );
+        state.filteredContacts = sortContacts(
+          state.filteredContacts,
+          state.sortType
+        );
       })
       .addCase(removeContact.fulfilled, (state, action) => {
         state.filteredContacts = state.filteredContacts.filter(
-          (contact) => contact.id !== action.payload
+          (contact) => contact.id !== action.payload.id
+        );
+        state.filteredContacts = sortContacts(
+          state.filteredContacts,
+          state.sortType
         );
       });
   },
@@ -112,7 +123,6 @@ const filtersSlice = createSlice({
 export const {
   changeNameFilter,
   changeNumberFilter,
-  initFilteredContacts,
   changeSearchType,
   changeSortType,
 } = filtersSlice.actions;

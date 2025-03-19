@@ -9,13 +9,16 @@ function Contact({ id, name, number, onDelete, onUpdate }) {
 
   const handleEdit = () => {
     setIsEditing(true);
-    setEditedName(name);
-    setEditedNumber(number);
   };
 
   const handleSave = () => {
     if (!editedName.trim() || !editedNumber.trim()) {
       alert("Name and number cannot be empty!");
+      return;
+    }
+
+    if (editedName === name && editedNumber === number) {
+      setIsEditing(false);
       return;
     }
 
@@ -25,7 +28,7 @@ function Contact({ id, name, number, onDelete, onUpdate }) {
       number: editedNumber.trim(),
     };
 
-    onUpdate(updatedContact); // Güncellenmiş contact nesnesini ilet
+    onUpdate(updatedContact);
     setIsEditing(false);
   };
 
@@ -52,7 +55,7 @@ function Contact({ id, name, number, onDelete, onUpdate }) {
           </button>
         </div>
       ) : (
-        <>
+        <div className={styles.wrapper}>
           <div className={styles.contactInfo}>
             <p className={styles.contactName}>
               <FaUser className={styles.icon} /> {name}
@@ -69,7 +72,7 @@ function Contact({ id, name, number, onDelete, onUpdate }) {
               <FaTrash /> Delete
             </button>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

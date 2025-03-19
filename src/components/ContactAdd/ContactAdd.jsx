@@ -6,22 +6,49 @@ import {
   selectContactsError,
 } from "../../redux/Contacts/selectors";
 import styles from "./ContactAdd.module.css";
+import { toast } from "react-toastify";
+import { Bounce } from "react-toastify";
 
 function ContactAdd() {
   const dispatch = useDispatch();
   const loadingStates = useSelector(selectContactsLoadingStates);
   const error = useSelector(selectContactsError);
 
-  // Formik initial values
+  const toastSettings = {
+    success: {
+      icon: "✅",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+      position: "top-right",
+    },
+    error: {
+      icon: "❌",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+      position: "top-right",
+    },
+  };
+
   const initialValues = {
     name: "",
     number: "",
   };
 
-  // Form submit handler
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = (values, { resetForm, setSubmitting }) => {
     if (!values.name.trim() || !values.number.trim()) {
-      alert("Please fill in both name and number fields.");
+      toast.error("Please fill in both name and number fields.", toastSettings.error);
       return;
     }
 
@@ -30,13 +57,19 @@ function ContactAdd() {
       number: values.number.trim(),
     };
 
+    setSubmitting(true); // Butonu hemen devre dışı bırak
     dispatch(addContact(newContact))
       .unwrap()
       .then(() => {
-        resetForm(); // Formu sıfırla
+        toast.success("Contact added successfully!", toastSettings.success);
+        resetForm();
       })
       .catch((err) => {
+        toast.error(`Error adding contact: ${err.message || "Unknown error"}`, toastSettings.error);
         console.error("Error adding contact:", err);
+      })
+      .finally(() => {
+        setSubmitting(false); // İşlem tamamlandığında butonu etkinleştir
       });
   };
 
@@ -56,7 +89,7 @@ function ContactAdd() {
                   name="name"
                   placeholder="Enter name"
                   className={styles.input}
-                  disabled={loadingStates.add}
+                  disabled={isSubmitting} // loadingStates.add kaldırıldı
                 />
               </div>
 
@@ -69,16 +102,16 @@ function ContactAdd() {
                   name="number"
                   placeholder="Enter phone number"
                   className={styles.input}
-                  disabled={loadingStates.add}
+                  disabled={isSubmitting} // loadingStates.add kaldırıldı
                 />
               </div>
 
               <button
                 type="submit"
                 className={styles.submitButton}
-                disabled={loadingStates.add || isSubmitting}
+                disabled={isSubmitting} // loadingStates.add kaldırıldı
               >
-                {loadingStates.add ? "Adding..." : "Add"}
+                {isSubmitting ? "Adding..." : "Add"}
               </button>
             </Form>
           )}
