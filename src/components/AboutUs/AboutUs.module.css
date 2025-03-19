@@ -8,7 +8,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:20px;
+    gap: 20px;
+    padding: 0 20px;
 }
 
 .textContent {
@@ -16,14 +17,14 @@
     margin-bottom: 40px;
 }
 
-.textContent > h2 {
-    margin-bottom: 40px;
-    font-size: 2.5rem;
+.textContent>h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
 }
 
 .textContent p {
-    font-size: 1.2rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 .infoBoxes {
@@ -31,6 +32,7 @@
     justify-content: space-around;
     width: 100%;
     margin-bottom: 40px;
+    flex-wrap: wrap;
 }
 
 .infoBox {
@@ -39,21 +41,34 @@
     background-color: transparent;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
 .infoBox h3 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-top: 10px;
 }
 
 .infoBox p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-top: 10px;
 }
 
 .icon {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: #4b2d8d;
 }
 
+@media (max-width: 768px) {
+    .infoBox {
+        width: 48%;
+    }
+}
+
+@media (max-width: 480px) {
+    .infoBox {
+        width: 100%;
+    }
+}

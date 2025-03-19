@@ -1,19 +1,85 @@
-.header{
+.header {
     background-color: var(--accent-color);
     color: var(--text-color);
     border-bottom: 1px solid var(--border-color);
     margin: 0 auto;
     width: 95%;
     max-width: 1200px;
-
     margin-top: 20px;
     border-radius: 10px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
 }
-.container{
+
+.container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
     padding: 1rem;
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 3px 0;
+    transition: 0.4s;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0.5rem;
+    }
+
+    .nav {
+        display: none;
+        /* Hide navigation on small screens */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        /* Adjust as needed */
+        left: 0;
+        background-color: var(--accent-color);
+        padding: 1rem;
+        z-index: 10;
+        align-items: center;
+    }
+
+    .nav.active {
+        display: flex;
+        /* Show navigation when active */
+    }
+
+    .hamburger {
+        display: flex;
+        /* Show hamburger menu on small screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .header {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        width: 100%;
+        border-radius: 0;
+    }
 }

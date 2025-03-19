@@ -15,13 +15,15 @@
 
 .contactCard:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 1);
-    /* Hover efektiyle gölgeyi artır */
 }
-.wrapper{
-    display:flex;
+
+.wrapper {
+    display: flex;
     flex-direction: column;
-    gap:20px;
+    gap: 20px;
+    width: 100%;
 }
+
 .contactInfo {
     flex-grow: 1;
     display: flex;
@@ -40,7 +42,6 @@
 .icon {
     margin-right: 10px;
     color: #4b2d8d;
-    /* Mor ikon rengi */
 }
 
 .buttonContainer {
@@ -67,7 +68,6 @@
 .deleteButton:hover,
 .saveButton:hover {
     background-color: #3a226b;
-    /* Daha koyu mor renk */
 }
 
 .editContainer {
@@ -78,14 +78,119 @@
 }
 
 .editInput {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f0f0f0;
-    /* Açık gri arka plan */
+    color: var(--text-color);
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background: transparent;
+    transition: all 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.editInput:hover {
+    border-color: #4112a5;
+    box-shadow: 0 4px 8px rgba(65, 18, 165, 0.2);
+    transform: translateY(-2px);
+}
+
+.editInput:focus {
+    border-color: #4112a5;
+    box-shadow: 0 0 8px rgba(65, 18, 165, 0.3);
+    outline: none;
 }
 
 .saveButton {
     align-self: flex-start;
-    /* Save butonunu sola hizala */
+}
+
+/* Responsive Design */
+
+@media (max-width: 1200px) {
+    .contactCard {
+        width: 280px;
+    }
+}
+
+@media (max-width: 992px) {
+    .contactCard {
+        width: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contactCard {
+        width: 90%;
+        max-width: 350px;
+        height: auto;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 15px;
+    }
+
+    .contactInfo,
+    .buttonContainer {
+        width: 100%;
+    }
+
+    .buttonContainer {
+        flex-direction: row;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+
+    .editContainer {
+        margin-top: 10px;
+    }
+
+    .wrapper {
+        width: 100%;
+    }
+
+    .editInput {
+        /* input alanları için responsive düzenleme */
+        font-size: 1rem;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    .contactCard {
+        width: 100%;
+        max-width: none;
+        padding: 10px;
+    }
+
+    .contactName,
+    .contactNumber {
+        font-size: 0.9rem;
+    }
+
+    .editButton,
+    .deleteButton,
+    .saveButton {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .wrapper {
+        gap: 10px;
+    }
+
+    .editInput {
+
+        font-size: 0.9rem;
+        padding: 6px;
+    }
+}
+
+@media(max-width: 480px) {
+    .contactCard {
+        width: 100%;
+    }
+
+    .wrapper {
+        width: 100%;
+    }
 }

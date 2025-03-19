@@ -2,7 +2,6 @@
     margin: 0 auto;
     width: 95%;
     max-width: 1200px;
-
 }
 
 .container {
@@ -43,7 +42,6 @@
 .subtitle span {
     font-weight: 600;
     color: rgba(75, 45, 141, 1);
-    /* Koyu mor tonları */
     position: relative;
     display: inline-block;
     font-size: 1.3em;
@@ -59,7 +57,6 @@
     width: 100%;
     height: 2px;
     background-color: rgba(122, 77, 202, 1);
-    /* Daha açık mor tonları */
     transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 0.3s ease;
@@ -67,11 +64,105 @@
 
 .subtitle span:hover {
     color: rgba(122, 77, 202, 1);
-    /* Hoverda mor tonları */
     transform: scale(1.05);
 }
 
 .subtitle span:hover::before {
     transform: scaleX(1);
     transform-origin: bottom left;
+}
+
+/* Responsive Design */
+
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .title {
+        font-size: 2.8rem;
+    }
+
+    .subtitle {
+        font-size: 1.6rem;
+    }
+
+    .td {
+        height: 600px;
+    }
+}
+
+@media (max-width: 992px) {
+    .title {
+        font-size: 2.6rem;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+    }
+
+    .td {
+        height: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        padding: 20px;
+    }
+
+    .titleContent {
+        width: 100%;
+        gap: 20px;
+    }
+
+    .title {
+        font-size: 2.4rem;
+        text-align: center;
+    }
+
+    .subtitle {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .td {
+        width: 90%;
+        max-width: 500px;
+        height: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
+    }
+
+    .td {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .td {
+        width: 100%;
+        max-width: 300px;
+    }
 }

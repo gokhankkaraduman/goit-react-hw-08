@@ -1,15 +1,42 @@
-
-
 .contactList {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 15px;
-
     border-radius: 10px;
-    /* Daha belirgin gölge */
 }
 
+/* Responsive Design */
 
+@media (max-width: 1200px) {
+    .contactList {
+        gap: 12px;
+    }
+}
 
+@media (max-width: 992px) {
+    .contactList {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contactList {
+        justify-content: space-around;
+        /* Daha küçük ekranlarda daha iyi dağılım */
+        gap: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .contactList {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contactList {
+        gap: 8px;
+    }
+}

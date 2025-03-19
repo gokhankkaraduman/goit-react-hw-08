@@ -65,6 +65,7 @@
     /* Şeffaf arka plan */
     transition: border 0.3s ease, box-shadow 0.3s ease;
 }
+
 .input::placeholder {
     color: var(--text-color);
     font-family: var(--font-body);
