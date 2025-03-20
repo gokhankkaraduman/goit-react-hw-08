@@ -1,0 +1,53 @@
+/* Loading.css */
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.95);
+    /* Daha koyu ve opak siyah arka plan */
+    z-index: 9999;
+}
+
+.spinner-ring {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border: 6px solid transparent;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
+}
+
+.inner-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #3498db;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.8);
+}
+
+.inner-circle.secondary {
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    opacity: 0.8;
+}
+
+.loading-text {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-family: 'Arial', sans-serif;
+    margin-top: 30px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}

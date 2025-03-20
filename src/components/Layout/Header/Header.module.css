@@ -1,94 +1,216 @@
 /* Header.module.css */
+.header {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    margin: 20px auto;
+    /* 20px üstten boşluk ve yatayda ortalama */
+    width: 100%;
+    max-width: 1280px;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.9);
+}
 
-/* Container'ı güncelle */
+/* Container */
 .container {
     display: flex;
     justify-content: space-between;
-    /* Logo solda, hamburger sağda olacak */
     align-items: center;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 0.75rem;
 }
 
 /* Hamburger Menu Styles */
 .hamburger {
     display: none;
-    /* Varsayılan olarak gizli */
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
     z-index: 20;
-    /* Menü üstte kalsın */
 }
 
 .hamburger div {
-    width: 25px;
-    height: 3px;
+    width: 20px;
+    height: 2px;
     background-color: var(--text-color);
     margin: 2px 0;
     transition: all 0.3s ease;
-    /* Animasyonlu geçiş */
 }
 
 /* Hamburger menü açıkken "X" şekline dönüşüm */
 .hamburger.active div:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(4px, 4px);
 }
 
 .hamburger.active div:nth-child(2) {
     opacity: 0;
-    /* Orta çubuk kaybolur */
 }
 
 .hamburger.active div:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
+/* Nav */
 .nav {
     display: flex;
     align-items: center;
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+
+/* 1200px ve altı */
+@media (max-width: 1200px) {
+    .header {
+        width: 95%;
+        max-width: 900px;
+        margin: 15px auto;
+        /* Üst boşluk ayarlandı */
+    }
+
+    .container {
+        padding: 0.6rem;
+    }
+}
+
+/* 992px ve altı (tablet boyutları) */
+@media (max-width: 992px) {
+    .header {
+        width: 95%;
+        margin: 12px auto;
+        /* Üst boşluk ayarlandı */
+    }
+
     .container {
         padding: 0.5rem;
+    }
+}
+
+/* 768px ve altı (mobil cihazlar) */
+@media (max-width: 768px) {
+    .header {
+        width: 98%;
+        margin: 10px auto;
+        /* Üst boşluk ayarlandı */
+    }
+
+    .container {
+        padding: 0.4rem;
         position: relative;
-        /* Nav pozisyonu için */
     }
 
     .hamburger {
         display: flex;
-        /* Mobil için görünür */
+        width: 22px;
+        height: 22px;
+    }
+
+    .hamburger div {
+        width: 18px;
+        height: 2px;
     }
 
     .nav {
         display: none;
-        /* Varsayılan olarak gizli */
         flex-direction: column;
         width: 100%;
         position: absolute;
         top: 100%;
-        /* Header'ın hemen altına */
         left: 0;
         background-color: var(--accent-color);
-        padding: 1rem;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        /* Hafif gölge */
+        padding: 0.75rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
         transition: transform 0.3s ease-in-out;
-        /* Açılma animasyonu */
-        transform: translateY(-10px);
-        /* Hafif yukarıda başlasın */
+        transform: translateY(-8px);
         z-index: 10;
     }
 
     .nav.active {
         display: flex;
-        /* Açıkken görünür */
         transform: translateY(0);
-        /* Normal pozisyona döner */
+    }
+}
+
+/* 576px ve altı (küçük mobil cihazlar) */
+@media (max-width: 576px) {
+    .header {
+        width: 98%;
+        margin: 8px auto;
+        /* Üst boşluk ayarlandı */
+    }
+
+    .container {
+        padding: 0.3rem;
+    }
+
+    .hamburger {
+        width: 20px;
+        height: 20px;
+    }
+
+    .hamburger div {
+        width: 16px;
+        height: 2px;
+    }
+
+    .nav {
+        padding: 0.6rem;
+    }
+}
+
+/* 480px ve altı (çok küçük ekranlar) */
+@media (max-width: 480px) {
+    .header {
+        width: 100%;
+        margin: 6px auto;
+        /* Üst boşluk ayarlandı */
+    }
+
+    .container {
+        padding: 0.25rem;
+    }
+
+    .hamburger {
+        width: 18px;
+        height: 18px;
+    }
+
+    .hamburger div {
+        width: 14px;
+        height: 1.5px;
+    }
+
+    .nav {
+        padding: 0.5rem;
+    }
+}
+
+/* 360px ve altı (ekstra küçük ekranlar) */
+@media (max-width: 360px) {
+    .header {
+        width: 90%;
+        margin: 4px auto;
+        /* Üst boşluk ayarlandı */
+    }
+
+    .container {
+        padding: 0.2rem;
+    }
+
+    .hamburger {
+        width: 16px;
+        height: 16px;
+    }
+
+    .hamburger div {
+        width: 12px;
+        height: 1.5px;
+    }
+
+    .nav {
+        padding: 0.4rem;
     }
 }

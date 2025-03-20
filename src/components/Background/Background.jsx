@@ -16,7 +16,7 @@ function Background({ children }) {
     }, []);
 
     return (
-        <motion.main style={{ backgroundImage: backgroundImage }}>
+        <motion.main style={{ backgroundImage: backgroundImage}}>
             {children}
         </motion.main>
     );

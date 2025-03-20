@@ -13,53 +13,64 @@ import {
 import {
   selectNameFilter,
   selectNumberFilter,
-  selectFilteredContacts, // Güncellenmiş selector'ı import et
+  selectFilteredContacts,
 } from "../../redux/Filters/selectors";
 import axios from "axios";
 import Contact from "../Contact/Contact";
+import Loading from "../Loading/Loading"; 
 import styles from "./ContactList.module.css";
 import { toast } from 'react-toastify';
 
 function ContactList() {
   const dispatch = useDispatch();
   const allContacts = useSelector(selectContacts);
-  const loadingStates = useSelector(selectContactsLoadingStates);
+  const loading = useSelector(selectContactsLoadingStates);
   const token = useSelector(selectToken);
 
   const nameFilter = useSelector(selectNameFilter);
   const numberFilter = useSelector(selectNumberFilter);
-  const filteredContacts = useSelector(selectFilteredContacts); // Sıralanmış verileri al
-
-  const displayContacts = filteredContacts; // Doğrudan sıralanmış verileri kullan
+  const filteredContacts = useSelector(selectFilteredContacts);
+  const loadingStates = loading.fetch;
+  const displayContacts = filteredContacts;
 
   useEffect(() => {
     if (token) {
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      dispatch(getContacts()).then(() => {
+        console.log("Contacts fetched, loadingStates should be false now");
+      });
     }
-    dispatch(getContacts());
   }, [dispatch, token]);
 
   const handleDelete = async (id) => {
     await dispatch(removeContact(id));
   };
 
-const handleUpdate = async (updatedContact) => {
-  try {
-    const currentContacts = allContacts; // Already fetched via useSelector
-    const contactExists = currentContacts.some(c => c.id === updatedContact.id);
-    if (!contactExists) {
-      console.error("Contact ID does not exist:", updatedContact.id);
-      toast.error("Contact not found!", toastSettings.error);
-      return;
+  const handleUpdate = async (updatedContact) => {
+    try {
+      const currentContacts = allContacts;
+      const contactExists = currentContacts.some(c => c.id === updatedContact.id);
+      if (!contactExists) {
+        console.error("Contact ID does not exist:", updatedContact.id);
+        toast.error("Contact not found!", { /* toastSettings.error yerine direkt obje */ position: "top-right", autoClose: 3000 });
+        return;
+      }
+      const result = await dispatch(updateContact(updatedContact));
+      if (updateContact.rejected.match(result)) {
+        console.error("Update failed:", result.payload);
+      }
+    } catch (error) {
+      console.error("Unexpected error during update:", error);
     }
-    const result = await dispatch(updateContact(updatedContact));
-    if (updateContact.rejected.match(result)) {
-      console.error("Update failed:", result.payload);
-    }
-  } catch (error) {
-    console.error("Unexpected error during update:", error);
+  };
+
+  // Yükleme durumunu konsola loglayarak debug yapalım
+  console.log("loadingStates:", loadingStates);
+
+  if (loadingStates) {
+    return <Loading />;
   }
-};
+
   return (
     <section className={styles.section}>
       <div className={styles.contactListBox}>

@@ -1,0 +1,24 @@
+/* MainLoading.module.css */
+.mainLoadingContainer {
+    position: fixed;
+    /* Ekranın tamamını kaplamak için fixed pozisyon */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* Görüş alanının tam genişliği */
+    height: 100vh;
+    /* Görüş alanının tam yüksekliği */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    /* Arka plan rengi (isteğe bağlı) */
+    z-index: 9999;
+    /* En üstte görünmesi için yüksek z-index */
+}
+
+/* Spline bileşeninin boyutunu kontrol etmek için */
+.splineWrapper {
+    width: 100%;
+    height: 100%;
+}
