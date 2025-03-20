@@ -1,18 +1,10 @@
-.header {
-    background-color: var(--accent-color);
-    color: var(--text-color);
-    border-bottom: 1px solid var(--border-color);
-    margin: 0 auto;
-    width: 95%;
-    max-width: 1200px;
-    margin-top: 20px;
-    border-radius: 10px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-}
+/* Header.module.css */
 
+/* Container'ı güncelle */
 .container {
     display: flex;
     justify-content: space-between;
+    /* Logo solda, hamburger sağda olacak */
     align-items: center;
     margin: 0 auto;
     padding: 1rem;
@@ -21,16 +13,38 @@
 /* Hamburger Menu Styles */
 .hamburger {
     display: none;
+    /* Varsayılan olarak gizli */
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
+    z-index: 20;
+    /* Menü üstte kalsın */
 }
 
 .hamburger div {
     width: 25px;
     height: 3px;
     background-color: var(--text-color);
-    margin: 3px 0;
-    transition: 0.4s;
+    margin: 2px 0;
+    transition: all 0.3s ease;
+    /* Animasyonlu geçiş */
+}
+
+/* Hamburger menü açıkken "X" şekline dönüşüm */
+.hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active div:nth-child(2) {
+    opacity: 0;
+    /* Orta çubuk kaybolur */
+}
+
+.hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 .nav {
@@ -39,47 +53,42 @@
 }
 
 /* Responsive Design */
-
 @media (max-width: 768px) {
     .container {
         padding: 0.5rem;
-    }
-
-    .nav {
-        display: none;
-        /* Hide navigation on small screens */
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 60px;
-        /* Adjust as needed */
-        left: 0;
-        background-color: var(--accent-color);
-        padding: 1rem;
-        z-index: 10;
-        align-items: center;
-    }
-
-    .nav.active {
-        display: flex;
-        /* Show navigation when active */
+        position: relative;
+        /* Nav pozisyonu için */
     }
 
     .hamburger {
         display: flex;
-        /* Show hamburger menu on small screens */
+        /* Mobil için görünür */
     }
-}
 
-@media (max-width: 576px) {
-    .header {
-        margin-top: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .header {
+    .nav {
+        display: none;
+        /* Varsayılan olarak gizli */
+        flex-direction: column;
         width: 100%;
-        border-radius: 0;
+        position: absolute;
+        top: 100%;
+        /* Header'ın hemen altına */
+        left: 0;
+        background-color: var(--accent-color);
+        padding: 1rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        /* Hafif gölge */
+        transition: transform 0.3s ease-in-out;
+        /* Açılma animasyonu */
+        transform: translateY(-10px);
+        /* Hafif yukarıda başlasın */
+        z-index: 10;
+    }
+
+    .nav.active {
+        display: flex;
+        /* Açıkken görünür */
+        transform: translateY(0);
+        /* Normal pozisyona döner */
     }
 }

@@ -2,7 +2,6 @@
     margin: 0 auto;
     width: 95%;
     max-width: 1200px;
-
 }
 
 .container {
@@ -21,4 +20,70 @@
     font-family: var(--font-body);
     color: var(--text-color);
     letter-spacing: 1px;
+}
+
+/* Responsive Design */
+
+@media (max-width: 1200px) {
+    .section {
+        width: 100%;
+        /* geniş ekranlarda %95'ten %100'e geçiş */
+    }
+}
+
+@media (max-width: 992px) {
+    .title {
+        font-size: 2.7rem;
+        /* biraz küçült */
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0.8rem;
+        /* biraz azalt */
+    }
+
+    .title {
+        font-size: 2.4rem;
+        /* biraz daha küçült */
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        gap: 15px;
+        /* biraz azalt */
+    }
+
+    .title {
+        font-size: 2rem;
+        /* daha da küçült */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0.6rem;
+        /* biraz daha azalt */
+    }
+
+    .title {
+        font-size: 1.8rem;
+        /* daha da küçült */
+    }
+}
+
+@media (max-width: 380px) {
+    .container {
+        gap: 10px;
+        /* en aza indir */
+        padding: 0.4rem;
+        /* en aza indir */
+    }
+
+    .title {
+        font-size: 1.6rem;
+        /* en aza indir */
+    }
 }

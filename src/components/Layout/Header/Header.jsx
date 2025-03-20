@@ -18,14 +18,17 @@ function Header() {
         <header className={css.header}>
             <div className={css.container}>
                 <Logo />
-                <div className={css.hamburger} onClick={toggleNav}>
+                <div
+                    className={`${css.hamburger} ${isNavOpen ? css.active : ''}`}
+                    onClick={toggleNav}
+                >
                     <div></div>
                     <div></div>
                     <div></div>
                 </div>
-                <nav className={`${css.nav} ${isNavOpen ? css.active : ''}`}>
+                <div className={`${css.nav} ${isNavOpen ? css.active : ''}`}>
                     {isLoggedIn ? <UserNav /> : <AuthNav />}
-                </nav>
+                </div>
             </div>
         </header>
     );

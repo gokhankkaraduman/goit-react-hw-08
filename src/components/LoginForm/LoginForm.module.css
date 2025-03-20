@@ -8,11 +8,9 @@
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
     background-color: rgba(255, 255, 255, 0.05);
-    /* Daha şeffaf arka plan */
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    /* Daha belirgin gölge */
 }
 
 .form {
@@ -40,7 +38,6 @@
 
 .label:hover {
     color: #93c5fd;
-    /* Daha açık mavi */
 }
 
 .label:hover+.input,
@@ -48,21 +45,18 @@
 .input:focus {
     border: 1px solid #93c5fd;
     box-shadow: 0 0 12px rgba(147, 197, 253, 0.7);
-    /* Daha belirgin gölge */
 }
 
 .input {
     width: 100%;
     height: 50px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Şeffaf kenarlık */
     border-radius: 5px;
     padding: 0 10px;
     font-size: 1rem;
     font-family: var(--font-input);
     color: var(--text-color);
     background-color: rgba(255, 255, 255, 0.05);
-    /* Şeffaf arka plan */
     transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -91,14 +85,11 @@
     border: none;
     border-radius: 5px;
     background-color: var(--accent-color);
-    /* Daha canlı mavi */
     color: white;
-    /* Beyaz text */
     font-size: 1rem;
     font-family: var(--font-body);
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-
 }
 
 .btn:hover {
@@ -109,4 +100,88 @@
 
 .btn:active {
     transform: scale(0.98);
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 30px;
+    }
+
+    .form {
+        width: 90%;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .form {
+        gap: 20px;
+    }
+
+    .input {
+        height: 45px;
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        height: 50px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        width: 98%;
+    }
+
+    .form {
+        gap: 15px;
+    }
+
+    .label {
+        font-size: 0.9rem;
+    }
+
+    .input {
+        height: 40px;
+        font-size: 0.85rem;
+    }
+
+    .btn {
+        height: 45px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .container {
+        padding: 10px;
+        width: 100%;
+    }
+
+    .form {
+        gap: 10px;
+    }
+
+    .label {
+        font-size: 0.85rem;
+    }
+
+    .input {
+        height: 35px;
+        font-size: 0.8rem;
+    }
+
+    .btn {
+        height: 40px;
+        font-size: 0.8rem;
+    }
 }

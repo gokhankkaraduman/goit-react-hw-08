@@ -1,42 +1,63 @@
+/* ContactList.module.css */
+
+.section {
+    padding: 20px;
+    /* Genel padding */
+}
+
+.contactListBox {
+    width: 100%;
+    max-width: 1200px;
+    /* Maksimum genişlik */
+    margin: 0 auto;
+    /* Ortala */
+    box-sizing: border-box;
+}
+
 .contactList {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Contact'ın grid düzeniyle uyumlu */
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.contactItem {
+    box-sizing: border-box;
+    /* Grid item'ları için */
+}
+
+.noContacts {
+    text-align: center;
+    padding: 20px;
 }
 
 /* Responsive Design */
-
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
     .contactList {
-        gap: 12px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 600px) {
     .contactList {
-        gap: 10px;
-    }
-}
-
-@media (max-width: 768px) {
-    .contactList {
-        justify-content: space-around;
-        /* Daha küçük ekranlarda daha iyi dağılım */
-        gap: 15px;
-    }
-}
-
-@media (max-width: 576px) {
-    .contactList {
-        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+        /* Contact'ın responsive gap'iyle uyumlu */
     }
 }
 
 @media (max-width: 480px) {
     .contactList {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        /* Contact'ın responsive gap'iyle uyumlu */
+    }
+}
+
+@media (max-width: 380px) {
+    .contactList {
         gap: 8px;
+        /* Contact'ın responsive gap'iyle uyumlu */
     }
 }

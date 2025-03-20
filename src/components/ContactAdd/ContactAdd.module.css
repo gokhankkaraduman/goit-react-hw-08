@@ -4,9 +4,12 @@
 }
 
 .addContactBox {
-    width: 400px;
+    width: 90%;
+    /* Başlangıçta genişliği %90 olarak ayarlayalım */
+    max-width: 400px;
+    /* Maksimum genişliği 400px olarak tutalım */
     min-height: 300px;
-    padding: 20px;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -15,6 +18,8 @@
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
+    margin: 20px auto;
+    /* Ortalamak için margin ekleyelim */
 }
 
 .addContactBox:hover {
@@ -127,26 +132,55 @@
 
 /* Responsive Design */
 
-@media (max-width: 1200px) {
-    .addContactBox {
-        width: 90%;
-        max-width: 500px;
-    }
-}
-
 @media (max-width: 992px) {
     .addContactBox {
-        width: 90%;
-        max-width: 450px;
+        min-height: auto;
+        justify-content: center;
+    }
+
+    .form {
+        gap: 15px;
     }
 }
 
 @media (max-width: 768px) {
-    .addContactBox {
-        width: 90%;
-        max-width: 350px;
-        padding: 15px;
+    .section{
+        width: 100%;
     }
+    .addContactBox {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .addContactBox h2 {
+        font-size: 19px;
+    }
+
+    .label {
+        font-size: 17px;
+    }
+
+    .input {
+        font-size: 15px;
+        padding: 9px;
+    }
+
+    .submitButton {
+        font-size: 15px;
+        padding: 11px;
+    }
+
+    .errorMessage {
+        font-size: 13px;
+    }
+
+    .form {
+        padding:1rem;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 576px) {
 
     .addContactBox h2 {
         font-size: 18px;
@@ -166,16 +200,38 @@
         padding: 10px;
     }
 
+    .errorMessage {
+        font-size: 12px;
+    }
+
     .form {
-        gap: 15px;
+        gap: 10px;
     }
 }
 
-@media (max-width: 576px) {
-    .addContactBox {
-        width: 95%;
-        max-width: 100%;
+@media (max-width: 480px) {
+
+
+    .addContactBox h2 {
+        font-size: 17px;
     }
+
+    .label {
+        font-size: 15px;
+    }
+
+    .input {
+        font-size: 13px;
+        padding: 7px;
+    }
+
+    .submitButton {
+        font-size: 13px;
+        padding: 9px;
+    }
+}
+
+@media (max-width: 380px) {
 
     .addContactBox h2 {
         font-size: 16px;
@@ -193,37 +249,5 @@
     .submitButton {
         font-size: 12px;
         padding: 8px;
-    }
-
-    .errorMessage {
-        font-size: 12px;
-    }
-
-    .form {
-        gap: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .addContactBox {
-        padding: 10px;
-    }
-
-    .addContactBox h2 {
-        font-size: 15px;
-    }
-
-    .label {
-        font-size: 13px;
-    }
-
-    .input {
-        font-size: 11px;
-        padding: 5px;
-    }
-
-    .submitButton {
-        font-size: 11px;
-        padding: 7px;
     }
 }
